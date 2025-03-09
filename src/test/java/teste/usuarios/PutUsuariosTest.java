@@ -40,18 +40,19 @@ public class PutUsuariosTest {
         test = extent.createTest("Deve retornar 200 quando usuario for alterado pelo id valido");
 
         given()
-                .basePath("/usuarios") // Define o caminho base
-                .pathParam("_id", "0uxuPY0cbmQhpEz1") // Define o parâmetro de caminho
+                .basePath("/usuarios") // Define o caminho base para a requisição (endpoint de usuários)
+                .pathParam("_id", "0uxuPY0cbmQhpEz1") // Define o parâmetro de caminho "_id" com o valor especificado (ID do usuário a ser atualizado)
                 .header("Content-Type", "application/json") // Adiciona um cabeçalho para indicar que o corpo da requisição está em formato JSON
-                .body("{\"nome\": \"Fulano da silva\" , \"email\": \"fulano@qa.com\", \"password\": \"teste2\", \"administrador\": \"true\"}") // Define o corpo da requisição com os dados válidos a serem enviados no POST
-                .log().all() // apresenta o log completo
-                .when() // Quando: Ação a ser testada
-                .put("/{_id}") // Faz a requisição GET
-                .then() // Então: Validações
-                .log().all() // apresenta log se a chamada falhar
-                .log().status() // apresenta log do status code
-                .statusCode(200) // Valida o status code
-                .body("message", equalTo("Registro alterado com sucesso"));
+                .body("{\"nome\": \"Fulano da silva\" , \"email\": \"fulano@qa.com\", \"password\": \"teste2\", \"administrador\": \"true\"}") // Define o corpo da requisição com os dados a serem enviados no PUT (atualização do usuário)
+                .log().all() // Loga todos os detalhes da requisição antes de enviá-la
+                .when() // Inicia a execução da requisição
+                .put("/{_id}") // Realiza uma requisição HTTP do tipo PUT para o endpoint "/usuarios/{_id}", com o ID especificado para atualizar o usuário
+                .then() // Inicia as validações da resposta da requisição
+                .log().all() // Loga os detalhes da resposta da requisição se a validação falhar
+                .log().status() // Loga o código de status da resposta para análise em caso de falha
+                .statusCode(200) // Valida que o código de status da resposta é 200 (OK), indicando sucesso na atualização
+                .body("message", equalTo("Registro alterado com sucesso")); // Valida que o corpo da resposta contém a mensagem "Registro alterado com sucesso", indicando que a atualização foi bem-sucedida
+
 
         test.pass("Alteracao realizada pelo parametro id com sucesso");
     }
@@ -61,19 +62,21 @@ public class PutUsuariosTest {
 
         test = extent.createTest("Deve retornar 400 quando usuario tiver o mesmo nome e email mas id diferente do existente");
 
+
         given()
-                .basePath("/usuarios") // Define o caminho base
-                .pathParam("_id", "0uxuPY0cbmQhpEz11") // Define o parâmetro de caminho
+                .basePath("/usuarios") // Define o caminho base para a requisição (endpoint de usuários)
+                .pathParam("_id", "0uxuPY0cbmQhpEz11") // Define o parâmetro de caminho "_id" com o valor especificado (ID do usuário a ser atualizado)
                 .header("Content-Type", "application/json") // Adiciona um cabeçalho para indicar que o corpo da requisição está em formato JSON
-                .body("{\"nome\": \"Fulano da silva\" , \"email\": \"ciclano@qa.com\", \"password\": \"teste2\", \"administrador\": \"true\"}") // Define o corpo da requisição com os dados válidos a serem enviados no POST
-                .log().all() // apresenta o log completo
-                .when() // Quando: Ação a ser testada
-                .put("/{_id}") // Faz a requisição GET
-                .then() // Então: Validações
-                .log().all() // apresenta log se a chamada falhar
-                .log().status() // apresenta log do status code
-                .statusCode(400) // Valida o status code
-                .body("message", equalTo("Este email já está sendo usado"));
+                .body("{\"nome\": \"Fulano da silva\" , \"email\": \"ciclano@qa.com\", \"password\": \"teste2\", \"administrador\": \"true\"}") // Define o corpo da requisição com os dados a serem enviados no PUT (atualização do usuário)
+                .log().all() // Loga todos os detalhes da requisição antes de enviá-la
+                .when() // Inicia a execução da requisição
+                .put("/{_id}") // Realiza uma requisição HTTP do tipo PUT para o endpoint "/usuarios/{_id}", com o ID especificado para atualizar o usuário
+                .then() // Inicia as validações da resposta da requisição
+                .log().all() // Loga os detalhes da resposta da requisição se a validação falhar
+                .log().status() // Loga o código de status da resposta para análise em caso de falha
+                .statusCode(400) // Valida que o código de status da resposta é 400 (Bad Request), indicando que houve um erro na requisição
+                .body("message", equalTo("Este email já está sendo usado")); // Valida que o corpo da resposta contém a mensagem "Este email já está sendo usado", indicando que o email fornecido já está registrado no sistema
+
 
         test.pass("Alteracao nao realizada pelo valor do parametro email ja ser existente");
     }
@@ -87,18 +90,19 @@ public class PutUsuariosTest {
         String emailAleatorio = "user" + UUID.randomUUID().toString().substring(0, 5) + "@qa.com"; // Gera um email único
 
         given()
-                .basePath("/usuarios") // Define o caminho base
-                .pathParam("_id", idAleatorio) // Define o parâmetro de caminho com ID aleatório
-                .header("Content-Type", "application/json") // Define o cabeçalho da requisição
-                .body("{\"nome\": \"Fulano da Silva\" , \"email\": \"" + emailAleatorio + "\", \"password\": \"teste2\", \"administrador\": \"true\"}") // Define o corpo com email aleatório
-                .log().all() // Exibe o log completo
-                .when() // Quando: Ação a ser testada
-                .put("/{_id}") // Faz a requisição PUT
-                .then() // Então: Validações
-                .log().all() // Exibe log apenas se a chamada falhar
-                .statusCode(201) // Valida o status code
-                .body("message", equalTo("Cadastro realizado com sucesso"))
-                .body("_id", notNullValue());
+                .basePath("/usuarios") // Define o caminho base para a requisição (endpoint de usuários)
+                .pathParam("_id", idAleatorio) // Define o parâmetro de caminho "_id" com um valor aleatório para o ID do usuário
+                .header("Content-Type", "application/json") // Define o cabeçalho da requisição indicando que o corpo da requisição será em formato JSON
+                .body("{\"nome\": \"Fulano da Silva\" , \"email\": \"" + emailAleatorio + "\", \"password\": \"teste2\", \"administrador\": \"true\"}") // Define o corpo da requisição com um nome fixo e um email aleatório gerado na variável emailAleatorio
+                .log().all() // Exibe o log completo da requisição antes de enviá-la
+                .when() // Inicia a execução da requisição
+                .put("/{_id}") // Realiza uma requisição HTTP do tipo PUT para o endpoint "/usuarios/{_id}", usando o ID aleatório para atualizar ou criar o usuário
+                .then() // Inicia as validações da resposta
+                .log().all() // Exibe o log da resposta da requisição apenas se a validação falhar
+                .statusCode(201) // Valida que o código de status da resposta é 201 (Created), indicando que o cadastro foi realizado com sucesso
+                .body("message", equalTo("Cadastro realizado com sucesso")) // Valida que a mensagem na resposta seja "Cadastro realizado com sucesso"
+                .body("_id", notNullValue()); // Valida que o campo "_id" não seja nulo, indicando que o usuário foi criado com sucesso e recebeu um ID
+
 
         test.pass("Criacao de usuario realizada com sucesso");
     }
