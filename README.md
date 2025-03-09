@@ -39,12 +39,13 @@ Isso executará todos os testes automatizados definidos no projeto.
 
 ## 📌 Estrutura do Projeto
 ```
-/test
-  ├── java
-  │   ├── api.tests (Testes automatizados de API)
-  │   ├── utils (Métodos auxiliares para os testes)
+src/test/java/teste
+  ├── login (Testes automatizados para a funcionalidade de login da API)
+  ├── usuarios (Testes automatizados para a funcionalidade de usuários da API)
   ├── resources
   │   ├── payloads (Corpos de requisição JSON usados nos testes)
+target
+  ├── extent.report.html (Relatório detalhado gerado após a execução dos testes)
 ```
 
 ## 📜 Exemplo de Teste com Rest Assured
@@ -63,6 +64,21 @@ public void validarLoginComSucesso() {
 }
 ```
 
+## 📊 Relatórios de Testes
+Após a execução dos testes, um relatório detalhado é gerado em:
+```
+/target/extent.report.html
+```
+O relatório contém informações como:
+- Quantidade de testes executados.
+- Status (sucesso ou falha).
+- Detalhes de cada teste.
+
+## 🛠️ Boas Práticas Utilizadas
+- **Organização por funcionalidade:** Os testes estão separados por pastas de acordo com as funcionalidades da API (login e usuários).
+- **Relatórios automatizados:** Utilização do **ExtentReports** para gerar relatórios detalhados após a execução dos testes.
+- **Facilidade de manutenção:** Estrutura clara e modular, facilitando a adição de novos testes ou modificações.
+
 ## 🛠️ Contribuição
 Sinta-se à vontade para contribuir! Para isso:
 1. Fork este repositório 🍴
@@ -76,7 +92,4 @@ Este projeto está sob a licença MIT - veja o arquivo [LICENSE](LICENSE) para m
 
 ---
 🔹 *Desenvolvido por Felipe Almeida Muginsk* 🔹
-
-
-
 
