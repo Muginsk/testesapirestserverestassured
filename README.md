@@ -42,8 +42,7 @@ Isso executará todos os testes automatizados definidos no projeto.
 src/test/java/teste
   ├── login (Testes automatizados para a funcionalidade de login da API)
   ├── usuarios (Testes automatizados para a funcionalidade de usuários da API)
-  ├── resources
-  │   ├── payloads (Corpos de requisição JSON usados nos testes)
+  |
 target
   ├── extent.report.html (Relatório detalhado gerado após a execução dos testes)
 ```
@@ -79,13 +78,6 @@ O relatório contém informações como:
 - **Relatórios automatizados:** Utilização do **ExtentReports** para gerar relatórios detalhados após a execução dos testes.
 - **Facilidade de manutenção:** Estrutura clara e modular, facilitando a adição de novos testes ou modificações.
 
-## 🛠️ Contribuição
-Sinta-se à vontade para contribuir! Para isso:
-1. Fork este repositório 🍴
-2. Crie uma branch para suas alterações (`git checkout -b minha-feature`)
-3. Commit suas mudanças (`git commit -m 'Adicionando nova funcionalidade'`)
-4. Faça push para a branch (`git push origin minha-feature`)
-5. Abra um Pull Request 🚀
 
 ## 📄 Licença
 Este projeto está sob a licença MIT - veja o arquivo [LICENSE](LICENSE) para mais detalhes.
