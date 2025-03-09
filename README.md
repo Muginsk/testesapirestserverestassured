@@ -1,113 +1,82 @@
 # testesapirestserverestassured
 
-Automação de API com Rest Assured
-Este repositório contém testes de automação para uma API utilizando o framework Rest Assured. O objetivo dos testes é garantir que a API esteja funcionando corretamente, validando os endpoints e as respostas.
+# Testes Automatizados de API com Rest Assured
 
-📝 Índice
-Sobre o Projeto
-Pré-requisitos
-Como Rodar os Testes
-Estrutura de Diretórios
-Exemplo de Teste
-Contribuindo
-Licença
-📌 Sobre o Projeto
-Este projeto utiliza Rest Assured, um framework de testes para automação de APIs em Java, para realizar testes automatizados contra uma API REST. Os testes têm como objetivo garantir que os endpoints da API estejam funcionando como esperado, validando os dados de entrada e saída, status codes e respostas.
+## 📖 Descrição
+Este repositório contém testes automatizados de API utilizando o framework **Rest Assured** em conjunto com **JUnit**. O objetivo é validar endpoints de uma API RESTful, garantindo qualidade e confiabilidade nos serviços expostos. 
 
-⚙️ Pré-requisitos
-Antes de rodar os testes, você precisará ter as seguintes ferramentas instaladas:
+## 🛠️ Tecnologias Utilizadas
+- [Java](https://www.oracle.com/java/) - Linguagem de programação
+- [Rest Assured](https://rest-assured.io/) - Framework para automação de testes de API
+- [JUnit](https://junit.org/) - Framework para testes unitários em Java
+- [Maven](https://maven.apache.org/) - Gerenciador de dependências
+- [Git](https://git-scm.com/) - Controle de versão
 
-Java 8 ou superior
-Maven (para gerenciar as dependências e rodar os testes)
-IDE como IntelliJ IDEA ou Eclipse para rodar o código
-Rest Assured (este projeto já inclui a dependência no pom.xml)
-🚀 Como Rodar os Testes
-Clone o repositório:
+## 🚀 Como Configurar e Executar os Testes
 
-bash
-Copiar
-Editar
+### 📥 Clonar o Repositório
+```sh
 git clone https://github.com/Muginsk/testesapirestserverestassured.git
 cd testesapirestserverestassured
-Verifique se o Maven está instalado:
+```
 
-bash
-Copiar
-Editar
-mvn -v
-Instale as dependências: Se você nunca executou o Maven no projeto antes, execute o seguinte comando para baixar todas as dependências:
+### 🏗️ Configurar o Projeto
+Certifique-se de ter o **Java 11+** e o **Maven** instalados. Para verificar:
+```sh
+java -version
+mvn -version
+```
+Caso precise instalar, consulte:
+- [Java](https://adoptopenjdk.net/)
+- [Maven](https://maven.apache.org/install.html)
 
-bash
-Copiar
-Editar
-mvn install
-Execute os testes: Após configurar o Maven, basta rodar os testes com o seguinte comando:
-
-bash
-Copiar
-Editar
+### ▶️ Executar os Testes
+Para rodar os testes, utilize o Maven:
+```sh
 mvn test
-Isso executará todos os testes automatizados na pasta src/test/java.
+```
+Isso executará todos os testes automatizados definidos no projeto.
 
-Verifique os resultados: Após a execução dos testes, os resultados serão exibidos no terminal, e você pode verificar os detalhes nos logs de cada execução.
+## 📌 Estrutura do Projeto
+```
+/test
+  ├── java
+  │   ├── api.tests (Testes automatizados de API)
+  │   ├── utils (Métodos auxiliares para os testes)
+  ├── resources
+  │   ├── payloads (Corpos de requisição JSON usados nos testes)
+```
 
-🗂️ Estrutura de Diretórios
-O repositório tem a seguinte estrutura de diretórios:
-
-bash
-Copiar
-Editar
-testesapirestserverestassured/
-│
-├── src/
-│   ├── main/
-│   │   └── java/                  # Código da aplicação (não se aplica para este repositório)
-│   └── test/
-│       └── java/
-│           └── com/
-│               └── example/       # Pacote de testes
-│                   └── ApiTest.java
-│                   └── AuthTest.java
-├── pom.xml                         # Dependências e configurações do Maven
-├── README.md                       # Este arquivo
-👨‍💻 Exemplo de Teste
-Aqui está um exemplo de como um teste simples para um endpoint de login pode ser estruturado usando Rest Assured:
-
-java
-Copiar
-Editar
-import io.restassured.RestAssured;
-import org.junit.Test;
-
-import static io.restassured.RestAssured.*;
-import static org.hamcrest.Matchers.*;
-
-public class AuthTest {
-
-    @Test
-    public void loginTest() {
-        RestAssured.baseURI = "https://api.exemplo.com";
-        
-        given()
-            .header("Content-Type", "application/json")
-            .body("{ \"email\": \"usuario@exemplo.com\", \"senha\": \"senha123\" }")
-        .when()
-            .post("/login")
-        .then()
-            .statusCode(200)
-            .body("message", equalTo("Login realizado com sucesso"))
-            .body("authorization", startsWith("Bearer "));
-    }
+## 📜 Exemplo de Teste com Rest Assured
+```java
+@Test
+public void validarLoginComSucesso() {
+    given()
+        .basePath("/login")
+        .header("Content-Type", "application/json")
+        .body("{\"email\": \"usuario@teste.com\", \"password\": \"123456\"}")
+    .when()
+        .post()
+    .then()
+        .statusCode(200)
+        .body("message", equalTo("Login realizado com sucesso"));
 }
-Esse teste realiza um POST para o endpoint de login e valida que o código de status retornado é 200 OK, a mensagem de sucesso e o formato do token de autorização.
+```
 
-🤝 Contribuindo
-Se você deseja contribuir para o projeto, siga os passos abaixo:
+## 🛠️ Contribuição
+Sinta-se à vontade para contribuir! Para isso:
+1. Fork este repositório 🍴
+2. Crie uma branch para suas alterações (`git checkout -b minha-feature`)
+3. Commit suas mudanças (`git commit -m 'Adicionando nova funcionalidade'`)
+4. Faça push para a branch (`git push origin minha-feature`)
+5. Abra um Pull Request 🚀
 
-Faça um fork deste repositório.
-Crie uma branch para suas alterações (git checkout -b minha-branch).
-Faça as alterações necessárias e faça um commit (git commit -m 'Adicionando novos testes').
-Faça o push para a sua branch (git push origin minha-branch).
-Abra um Pull Request explicando as alterações feitas.
-📝 Licença
-Este projeto está sob a licença MIT. Veja o arquivo LICENSE para mais detalhes.
+## 📄 Licença
+Este projeto está sob a licença MIT - veja o arquivo [LICENSE](LICENSE) para mais detalhes.
+
+---
+🔹 *Desenvolvido por Felipe Almeida Muginsk* 🔹
+
+
+
+
