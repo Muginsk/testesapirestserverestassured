@@ -33,6 +33,12 @@
                 <scope>test</scope>
             </dependency>
 
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.30</version> <!-- Use sempre a versão mais recente -->
+            <scope>provided</scope>
+        </dependency>
 
 
 
