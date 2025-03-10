@@ -18,9 +18,9 @@ public class PostLoginTest {
     static ExtentReports extent;
     ExtentTest test;
 
-    public static final String BASE_URL = "http://localhost:3000";
+    public static final String BASE_URL = "https://serverest.dev";
 
-    String requestBodyValido = "{\"email\": \"fulano@qa.com\", \"password\": \"teste2\"}";
+    String requestBodyValido = "{\"email\": \"fulano@qa.com\", \"password\": \"teste\"}";
     String requestBodyComUsuarioInexistente = "{\"email\": \"beltrano@qa.com\", \"password\": \"teste123\"}";
     String requestBodyComUsuarioInvalido = "{\"email\": \"beltrano@qa.com1\", \"password\": \"teste123\"}";
 
