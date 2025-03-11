@@ -19,7 +19,7 @@ public class DeleteUsuariosTest {
     static ExtentReports extent;
     ExtentTest test;
 
-    public static final String BASE_URL = "http://localhost:3000";
+    public static final String BASE_URL = "https://serverest.dev";
 
     @BeforeAll
     public static void report() {

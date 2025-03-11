@@ -18,7 +18,7 @@ public class GetUsuariosTest {
     static ExtentReports extent;
     ExtentTest test;
 
-    public static final String BASE_URL = "http://localhost:3000";
+    public static final String BASE_URL = "https://serverest.dev";
 
 
     @BeforeAll
@@ -89,7 +89,7 @@ public class GetUsuariosTest {
                 .log().ifValidationFails() // Caso a validação falhe, exibe os detalhes da resposta no log
                 .log().status() // Loga o código de status da resposta para análise em caso de falha
                 .statusCode(200) // Valida que o código de status da resposta é 200 (OK), indicando sucesso na requisição
-                .body("nome", equalTo("Fulano da silva")); // Valida que o campo "nome" no corpo da resposta é igual a "Fulano da Silva", garantindo que o nome retornado está correto
+                .body("nome", equalTo("Fulano da Silva")); // Valida que o campo "nome" no corpo da resposta é igual a "Fulano da Silva", garantindo que o nome retornado está correto
 
 
         test.pass("Busca realizada pelo parametro nome com sucesso");
@@ -110,7 +110,7 @@ public class GetUsuariosTest {
                 .log().ifValidationFails() // Caso a validação falhe, exibe os detalhes da resposta no log
                 .log().status() // Loga o código de status da resposta para análise em caso de falha
                 .statusCode(200) // Valida que o código de status da resposta é 200 (OK), indicando sucesso na requisição
-                .body("nome", equalTo("Fulano da silva")); // Valida que o campo "nome" no corpo da resposta é igual a "Fulano da Silva", garantindo que o nome retornado está correto
+                .body("nome", equalTo("Fulano da Silva")); // Valida que o campo "nome" no corpo da resposta é igual a "Fulano da Silva", garantindo que o nome retornado está correto
 
 
         test.pass("Busca realizada pelo parametro email com sucesso");
@@ -131,7 +131,7 @@ public class GetUsuariosTest {
                 .log().ifValidationFails() // Caso a validação falhe, exibe os detalhes da resposta no log
                 .log().status() // Loga o código de status da resposta para análise em caso de falha
                 .statusCode(200) // Valida que o código de status da resposta é 200 (OK), indicando sucesso na requisição
-                .body("nome", equalTo("Fulano da silva")); // Valida que o campo "nome" no corpo da resposta é igual a "Fulano da Silva", garantindo que o nome retornado está correto
+                .body("nome", equalTo("Fulano da Silva")); // Valida que o campo "nome" no corpo da resposta é igual a "Fulano da Silva", garantindo que o nome retornado está correto
 
 
         test.pass("Busca realizada pelo parametro password com sucesso");
