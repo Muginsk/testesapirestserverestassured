@@ -20,7 +20,7 @@ public class PostLoginTest {
 
     public static final String BASE_URL = "https://serverest.dev";
 
-    String requestBodyValido = "{\"email\": \"fulano@qa.com\", \"password\": \"teste\"}";
+    String requestBodyValido = "{\"email\": \"fulano@qa.com\", \"password\": \"teste2\"}";
     String requestBodyComUsuarioInexistente = "{\"email\": \"beltrano@qa.com\", \"password\": \"teste123\"}";
     String requestBodyComUsuarioInvalido = "{\"email\": \"beltrano@qa.com1\", \"password\": \"teste123\"}";
 
