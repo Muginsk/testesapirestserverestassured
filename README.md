@@ -1,87 +1,83 @@
-# testesapirestserverestassured
+# Testes Automatizados com Rest Assured
 
-# Testes Automatizados de API com Rest Assured
+## 📌 Descrição
 
-## 📖 Descrição
-Este repositório contém testes automatizados de API utilizando o framework **Rest Assured** em conjunto com **JUnit**. O objetivo é validar endpoints de uma API RESTful, garantindo qualidade e confiabilidade nos serviços expostos. 
+Este projeto contém testes automatizados de API utilizando **Rest Assured** para validar funcionalidades do servidor de testes **Serverest**. Os testes verificam requisições HTTP e suas respectivas respostas, garantindo a confiabilidade das APIs.
 
-## 🛠️ Tecnologias Utilizadas
-- [Java](https://www.oracle.com/java/) - Linguagem de programação
-- [Rest Assured](https://rest-assured.io/) - Framework para automação de testes de API
-- [JUnit](https://junit.org/) - Framework para testes unitários em Java
-- [Maven](https://maven.apache.org/) - Gerenciador de dependências
-- [Git](https://git-scm.com/) - Controle de versão
+## 🚀 Tecnologias Utilizadas
 
-## 🚀 Como Configurar e Executar os Testes
+- **Java** - Linguagem utilizada para os testes  
+- **Rest Assured** - Biblioteca para testes de API  
+- **JUnit** - Framework de testes unitários  
+- **Maven** - Gerenciador de dependências  
+- **GitHub Actions** - Para execução dos testes em CI/CD  
+- **ExtentReports** - Geração de relatórios detalhados  
 
-### 📥 Clonar o Repositório
-```sh
-git clone https://github.com/Muginsk/testesapirestserverestassured.git
-cd testesapirestserverestassured
+## 📂 Estrutura do Projeto
+
+```
+/testesapirestserverestassured
+│── src/test/java/
+│   ├── tests/        # Casos de Teste
+│── pom.xml           # Gerenciador de dependências Maven
+│── README.md         # Documentação do projeto
+│── reports/          # Relatórios gerados pelo ExtentReports
 ```
 
-### 🏗️ Configurar o Projeto
-Certifique-se de ter o **Java 11+** e o **Maven** instalados. Para verificar:
-```sh
-java -version
-mvn -version
-```
-Caso precise instalar, consulte:
-- [Java](https://adoptopenjdk.net/)
-- [Maven](https://maven.apache.org/install.html)
+## 🛠️ Pré-requisitos
 
-### ▶️ Executar os Testes
-Para rodar os testes, utilize o Maven:
+Antes de rodar os testes, certifique-se de ter instalado:
+
+- **Java** (versão 11 ou superior)  
+- **Maven**  
+
+Para instalar as dependências, execute:
+
+```sh
+mvn clean install
+```
+
+## ▶️ Como Executar os Testes
+
+Executar os testes via Maven:
+
 ```sh
 mvn test
 ```
-Isso executará todos os testes automatizados definidos no projeto.
 
-## 📌 Estrutura do Projeto
-```
-src/test/java/teste
-  ├── login (Testes automatizados para a funcionalidade de login da API)
-  ├── usuarios (Testes automatizados para a funcionalidade de usuários da API)
-  |
-target
-  ├── extent.report.html (Relatório detalhado gerado após a execução dos testes)
+Executar testes especificando a classe:
+
+```sh
+mvn -Dtest=NomeDaClasseDeTeste test
 ```
 
-## 📜 Exemplo de Teste com Rest Assured
-```java
-@Test
-public void validarLoginComSucesso() {
-    given()
-        .basePath("/login")
-        .header("Content-Type", "application/json")
-        .body("{\"email\": \"usuario@teste.com\", \"password\": \"123456\"}")
-    .when()
-        .post()
-    .then()
-        .statusCode(200)
-        .body("message", equalTo("Login realizado com sucesso"));
-}
+## 💊 Relatório de Testes
+
+Os relatórios de execução dos testes são gerados automaticamente na pasta `reports/`.
+
+### 📣 Importância do Relatório
+
+Os relatórios fornecem uma visão clara dos testes executados, incluindo:
+
+- Testes aprovados e falhos  
+- Tempo de execução de cada teste  
+- Logs detalhados  
+
+Isso facilita a identificação de falhas e ajuda na melhoria da qualidade do software.
+
+## 🔗 Como Acessar o Relatório ExtentReports
+
+Após a execução dos testes, o relatório pode ser acessado abrindo o arquivo gerado dentro da pasta `reports/`.
+
+## 🛠️ Configuração no GitHub Actions
+
+O projeto possui um workflow configurado para executar os testes automaticamente no GitHub Actions. O workflow está localizado em:
+
+```
+.github/workflows/github_actions_api.yml
 ```
 
-## 📊 Relatórios de Testes
-Após a execução dos testes, um relatório detalhado é gerado em:
-```
-/target/extent.report.html
-```
-O relatório contém informações como:
-- Quantidade de testes executados.
-- Status (sucesso ou falha).
-- Detalhes de cada teste.
+## 📝 Licença
 
-## 🛠️ Boas Práticas Utilizadas
-- **Organização por funcionalidade:** Os testes estão separados por pastas de acordo com as funcionalidades da API (login e usuários).
-- **Relatórios automatizados:** Utilização do **ExtentReports** para gerar relatórios detalhados após a execução dos testes.
-- **Facilidade de manutenção:** Estrutura clara e modular, facilitando a adição de novos testes ou modificações.
-
-
-## 📄 Licença
-Este projeto está sob a licença MIT - veja o arquivo [LICENSE](LICENSE) para mais detalhes.
-
----
-🔹 *Desenvolvido por Felipe Almeida Muginsk* 🔹
+Este projeto está sob a licença MIT. Sinta-se livre para utilizá-lo e contribuir!
 
