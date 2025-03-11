@@ -19,7 +19,7 @@ public class PutUsuariosTest {
     static ExtentReports extent;
     ExtentTest test;
 
-    public static final String BASE_URL = "http://localhost:3000";
+    public static final String BASE_URL = "https://serverest.dev";
 
     @BeforeAll
     public static void report() {
@@ -67,7 +67,7 @@ public class PutUsuariosTest {
                 .basePath("/usuarios") // Define o caminho base para a requisição (endpoint de usuários)
                 .pathParam("_id", "0uxuPY0cbmQhpEz11") // Define o parâmetro de caminho "_id" com o valor especificado (ID do usuário a ser atualizado)
                 .header("Content-Type", "application/json") // Adiciona um cabeçalho para indicar que o corpo da requisição está em formato JSON
-                .body("{\"nome\": \"Fulano da silva\" , \"email\": \"ciclano@qa.com\", \"password\": \"teste2\", \"administrador\": \"true\"}") // Define o corpo da requisição com os dados a serem enviados no PUT (atualização do usuário)
+                .body("{\"nome\": \"Fulano da silva\" , \"email\": \"fulano@qa.com\", \"password\": \"teste2\", \"administrador\": \"true\"}") // Define o corpo da requisição com os dados a serem enviados no PUT (atualização do usuário)
                 .log().all() // Loga todos os detalhes da requisição antes de enviá-la
                 .when() // Inicia a execução da requisição
                 .put("/{_id}") // Realiza uma requisição HTTP do tipo PUT para o endpoint "/usuarios/{_id}", com o ID especificado para atualizar o usuário
@@ -90,7 +90,7 @@ public class PutUsuariosTest {
         String emailAleatorio = "user" + UUID.randomUUID().toString().substring(0, 5) + "@qa.com"; // Gera um email único
 
         given()
-                .basePath("/usuarios") // Define o caminho base para a requisição (endpoint de usuários)
+                .basePath("/usuarios") // Define o caminho base para a requisição
                 .pathParam("_id", idAleatorio) // Define o parâmetro de caminho "_id" com um valor aleatório para o ID do usuário
                 .header("Content-Type", "application/json") // Define o cabeçalho da requisição indicando que o corpo da requisição será em formato JSON
                 .body("{\"nome\": \"Fulano da Silva\" , \"email\": \"" + emailAleatorio + "\", \"password\": \"teste2\", \"administrador\": \"true\"}") // Define o corpo da requisição com um nome fixo e um email aleatório gerado na variável emailAleatorio
