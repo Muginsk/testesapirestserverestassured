@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
 
     permissions:
-      contents: write           # Permissão para escrever no conteúdo do repositórioa
+      contents: write           # Permissão para escrever no conteúdo do repositório
       security-events: write    # Permissão para interagir com o gráfico de dependências
       actions: write            # Permissão para escrever ações do GitHub
       pull-requests: write      # Permissão para interagir com pull requests
