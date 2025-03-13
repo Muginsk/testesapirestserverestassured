@@ -1,4 +1,4 @@
-package teste.login;
+package login;
 
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
