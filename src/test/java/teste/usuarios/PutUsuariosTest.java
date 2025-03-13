@@ -64,7 +64,7 @@ public class PutUsuariosTest {
 
 
         given()
-                .basePath("/usuarios") // Define o caminho base para a requisição (endpoint de usuários)
+                .basePath("/usuarios") // Define o caminho base para a requisição
                 .pathParam("_id", "0uxuPY0cbmQhpEz11") // Define o parâmetro de caminho "_id" com o valor especificado (ID do usuário a ser atualizado)
                 .header("Content-Type", "application/json") // Adiciona um cabeçalho para indicar que o corpo da requisição está em formato JSON
                 .body("{\"nome\": \"Fulano da silva\" , \"email\": \"fulano@qa.com\", \"password\": \"teste2\", \"administrador\": \"true\"}") // Define o corpo da requisição com os dados a serem enviados no PUT (atualização do usuário)
