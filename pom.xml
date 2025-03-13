@@ -22,15 +22,15 @@
             <version>5.0.9</version>
         </dependency>
 
-        <!-- Dependência do RestAssured -->
+
         <dependency>
-            <groupId>io.rest-assured</groupId>
-            <artifactId>rest-assured</artifactId>
-            <version>5.3.0</version>
-            <scope>test</scope>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.30</version> <!-- Use sempre a versão mais recente -->
+            <scope>provided</scope>
         </dependency>
 
-        <!-- Dependência do JUnit 5 -->
+
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
